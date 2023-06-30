@@ -4,11 +4,11 @@
 Cat::Cat() : Animal() {
 	type = "Cat";
 	brain = new Brain;
-	std::cout << "Cat type:" << type << " Default constructor called" << std::endl;
+	std::cout << "Default constructor called, Cat type:" << type <<  std::endl;
 }
 
 Cat::Cat(const Cat& other) : Animal(other) {
-	std::cout << "Cat type:" << type << " Copy constructor called" << std::endl;
+	std::cout << "Copy constructor called, Cat type:" << type <<  std::endl;
 	if (other.brain == NULL) {
 		brain = NULL;
 	}
@@ -19,7 +19,7 @@ Cat::Cat(const Cat& other) : Animal(other) {
 }
 
 Cat& Cat::operator=(const Cat& other) {
-	std::cout << "Cat type:" << type << " Copy assignment operator called" << std::endl;
+	std::cout << "Copy assignment operator called, Cat type:" << type <<  std::endl;
 	if (this != &other) {
 		Animal::operator=(other);
 		delete brain;
@@ -35,7 +35,7 @@ Cat& Cat::operator=(const Cat& other) {
 }
 
 Cat::~Cat() {
-	std::cout << "Cat type:" << type << " Destructor called" << std::endl;
+	std::cout << "Destructor called, Cat type:" << type <<  std::endl;
 	delete brain;
 }
 
