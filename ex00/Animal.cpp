@@ -20,3 +20,11 @@ Animal& Animal::operator=(const Animal& other) {
 Animal::~Animal() {
 	std::cout << "Animal type:" << type << " Destructor called" << std::endl;
 }
+
+std::string Animal::getType() const {
+	return type;
+}
+
+void Animal::makeSound() const {
+	std::cout << "a n y m o r e" << std::endl;
+}

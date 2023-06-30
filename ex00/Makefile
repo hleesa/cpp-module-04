@@ -1,31 +1,39 @@
 
+.DEFAULT_GOAL := all
+
 CXX			= c++
+CXXFLAGS	= -Wall -Wextra -Werror -MMD -MP -std=c++98
 
-CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
-
-SOURCES		= \
+SRCS = \
 	Animal.cpp \
+	Cat.cpp \
+	Dog.cpp \
 	main.cpp \
+	WrongAnimal.cpp \
+	WrongCat.cpp \
 
-OBJECTS		= $(SOURCES:.cpp=.o)
+OBJS = $(SRCS:.cpp=.o)
+DEPS = $(SRCS:.cpp=.d)
+-include $(DEPS)
 
-TARGET		= polymorphsim
 
-all: $(TARGET)
+NAME = polymorphsim
 
-$(TARGET): $(OBJECTS)
+all: $(NAME)
+
+$(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 clean:
-	$(RM) $(OBJECTS)
+	$(RM) $(OBJS) $(DEPS)
 
-fclean:clean
-	$(RM) $(TARGET)
+fclean: clean
+	$(RM) $(NAME)
 
 re: fclean
-	make all
+	$(MAKE) all
 
 .PHONY: all clean fclean re
