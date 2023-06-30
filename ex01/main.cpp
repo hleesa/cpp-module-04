@@ -20,5 +20,11 @@ int main() {
 		animals[i]->makeSound();
 	}
 	std::cout << "================================================" << std::endl;
+	for (int i = 0; i < size; ++i) {
+		std::cout << "i:" << i << std::endl;
+		delete animals[i];
+	}
+	std::cout << "================================================" << std::endl;
+	system("leaks worldonfire");
 	return 0;
 }

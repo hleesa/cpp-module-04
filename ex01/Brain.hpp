@@ -4,6 +4,7 @@
 
 #include <stddef.h>
 #include <string>
+#include <iostream>
 
 class Brain {
 
@@ -20,7 +21,9 @@ public:
 
 	~Brain();
 
-	static size_t getsize();
+//	static size_t getsize();
+
+//	void printAllIdea();
 
 };
 
