@@ -5,10 +5,9 @@ CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror -MMD -MP -std=c++98
 
 SRCS = \
-	Animal.cpp \
-	Brain.cpp \
-	Cat.cpp \
-	Dog.cpp \
+	AMateria.cpp \
+	ICharacter.cpp \
+	IMateriaSource.cpp \
 	main.cpp \
 
 OBJS = $(SRCS:.cpp=.o)

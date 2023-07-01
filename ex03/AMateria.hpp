@@ -2,15 +2,16 @@
 #ifndef AMATERIA_HPP
 #define AMATERIA_HPP
 
-class AMateria {
+class AMateria
+{
 protected:
 	[...]
 public:
-	AMateria(std::string const& type);
+	AMateria(std::string const &type);
 
 	[...]
 
-	std::string const& getType() const; //Returns the materia type
+	std::string const &getType() const; //Returns the materia type
 	virtual AMateria *clone() const = 0;
 };
 

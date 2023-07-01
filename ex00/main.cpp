@@ -4,8 +4,8 @@
 #include "WrongCat.hpp"
 
 int main() {
-	std::cout << "############################################################"<< std::endl;
-	std::cout << "############################################################"<< std::endl;
+	std::cout << "############################################################" << std::endl;
+	std::cout << "############################################################" << std::endl;
 	const Animal* meta = new Animal();
 	const Animal* dog = new Dog();
 	const Animal* cat = new Cat();
@@ -24,5 +24,13 @@ int main() {
 	wrongCat->makeWrongSound();
 	wrongMeta->makeWrongSound();
 	std::cout << "============================================================" << std::endl;
+	delete meta;
+	delete dog;
+	delete cat;
+	std::cout << "============================================================" << std::endl;
+	delete wrongMeta;
+	delete wrongCat;
+	std::cout << "============================================================" << std::endl;
+
 	return 0;
 }
