@@ -4,11 +4,11 @@
 Dog::Dog() : Animal() {
 	type = "Dog";
 	brain = new Brain;
-	std::cout << "Default constructor called, Dog type:" << type <<  std::endl;
+	std::cout << "Default constructor called, Dog type: " << type <<  std::endl;
 }
 
 Dog::Dog(const Dog& other) : Animal(other) {
-	std::cout << "Copy constructor called, Dog type:" << type <<  std::endl;
+	std::cout << "Copy constructor called, Dog type: " << type <<  std::endl;
 	if (other.brain == NULL) {
 		brain = NULL;
 	}
@@ -19,7 +19,7 @@ Dog::Dog(const Dog& other) : Animal(other) {
 }
 
 Dog& Dog::operator=(const Dog& other) {
-	std::cout << "Copy assignment operator called, Dog type:" << type <<  std::endl;
+	std::cout << "Copy assignment operator called, Dog type: " << type <<  std::endl;
 	if (this != &other) {
 		Animal::operator=(other);
 		if (other.brain == NULL) {
@@ -35,7 +35,7 @@ Dog& Dog::operator=(const Dog& other) {
 }
 
 Dog::~Dog() {
-	std::cout << "Destructor called, Dog type:" << type <<  std::endl;
+	std::cout << "Destructor called, Dog type: " << type <<  std::endl;
 	delete brain;
 }
 
