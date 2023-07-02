@@ -31,6 +31,6 @@ int main() {
 	delete wrongMeta;
 	delete wrongCat;
 	std::cout << "============================================================" << std::endl;
-
+	system("leaks polymorphsim");
 	return 0;
 }

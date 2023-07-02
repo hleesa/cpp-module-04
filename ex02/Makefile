@@ -16,7 +16,7 @@ DEPS = $(SRCS:.cpp=.d)
 -include $(DEPS)
 
 
-NAME = abstarctclass
+NAME = worldonfire
 
 all: $(NAME)
 

@@ -3,8 +3,8 @@
 
 Cat::Cat() : Animal() {
 	type = "Cat";
-	brain = new Brain;
 	std::cout << "Default constructor called, Cat type: " << type <<  std::endl;
+	brain = new Brain;
 }
 
 Cat::Cat(const Cat& other) : Animal(other) {

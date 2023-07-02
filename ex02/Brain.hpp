@@ -21,10 +21,6 @@ public:
 
 	~Brain();
 
-//	static size_t getsize();
-
-//	void printAllIdea();
-
 };
 
 

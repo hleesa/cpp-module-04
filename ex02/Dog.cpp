@@ -3,8 +3,8 @@
 
 Dog::Dog() : Animal() {
 	type = "Dog";
-	brain = new Brain;
 	std::cout << "Default constructor called, Dog type: " << type <<  std::endl;
+	brain = new Brain;
 }
 
 Dog::Dog(const Dog& other) : Animal(other) {

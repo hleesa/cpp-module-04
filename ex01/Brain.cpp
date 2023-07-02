@@ -26,14 +26,3 @@ Brain& Brain::operator=(const Brain& other) {
 Brain::~Brain() {
 	std::cout << "Destructor called, Brain" << std::endl;
 }
-
-//void Brain::printAllIdea(){
-//	for (size_t i = 0; i < size; ++i) {
-//		std::cout << "index[" << i << "]: " << ideas[i] << std::endl;
-//	}
-//}
-
-
-//size_t Brain::getsize() {
-//	return size;
-//}
