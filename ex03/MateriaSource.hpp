@@ -7,9 +7,9 @@
 class MateriaSource : public IMateriaSource {
 
 private:
-	size_t idx;
-	const size_t size = 4;
-	AMateria materias[size];
+	int idx;
+	static const int size = 4;
+	AMateria* materias[size];
 
 public:
 

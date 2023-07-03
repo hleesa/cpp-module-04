@@ -23,8 +23,7 @@ MateriaSource::~MateriaSource() {
 }
 
 void MateriaSource::learnMateria(AMateria* materia) {
-
-
+	(void) materia;
 }
 
 AMateria* MateriaSource::createMateria(const std::string& type) {

@@ -4,6 +4,6 @@
 AMateria::AMateria(const std::string& type) : type(type) {
 }
 
-std::string AMateria::getType() const {
+const std::string& AMateria::getType() const {
 	return type;
 }

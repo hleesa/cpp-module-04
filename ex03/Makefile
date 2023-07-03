@@ -6,9 +6,11 @@ CXXFLAGS	= -Wall -Wextra -Werror -MMD -MP -std=c++98
 
 SRCS = \
 	AMateria.cpp \
-	ICharacter.cpp \
-	IMateriaSource.cpp \
+	Character.cpp \
+	Cure.cpp \
+	Ice.cpp \
 	main.cpp \
+	MateriaSource.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(SRCS:.cpp=.d)

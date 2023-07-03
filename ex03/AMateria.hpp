@@ -5,6 +5,8 @@
 #include <iostream>
 #include "ICharacter.hpp"
 
+class ICharacter;
+
 class AMateria {
 
 protected:
@@ -21,10 +23,6 @@ public:
 
 	virtual void use(ICharacter& target);
 
-	/**
-	 * 소멸자?
-	 * 기본 생성자, 복사 생성자, 복사 대입연산자?
-	 */
 };
 
 #endif //AMATERIA_HPP
