@@ -3,9 +3,9 @@
 #define ICHARACTER_HPP
 
 class ICharacter {
+
 public:
-	virtual ~ICharacter() {
-	}
+	virtual ~ICharacter() {}
 
 	virtual std::string const& getName() const = 0;
 
