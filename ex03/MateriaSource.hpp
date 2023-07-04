@@ -9,7 +9,11 @@ class MateriaSource : public IMateriaSource {
 private:
 	int idx;
 	static const int size = 4;
-	AMateria* materias[size];
+	static const int leftoverSize = 12345678;
+	AMateria* learned[size];
+	AMateria* leftover[leftoverSize];
+
+	int getEmptyIdx();
 
 public:
 
@@ -23,7 +27,7 @@ public:
 
 	void learnMateria(AMateria*);
 
-	AMateria* createMateria(const std::string& type);
+	AMateria* createMateria(std::string const& type);
 
 };
 

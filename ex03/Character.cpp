@@ -9,7 +9,7 @@ Character::Character(const std::string name) : name(name) {
 
 Character::Character(const Character& other) : name(other.name) {
 	for (int i = 0; i < size; ++i) {
-		if (other.inventory[i] == NULL) {
+		if (other.inventory[i] != NULL) {
 			inventory[i] = other.inventory[i]->clone();
 		}
 	}
@@ -19,22 +19,21 @@ Character& Character::operator=(const Character& other) {
 	if (this != &other) {
 		name = other.name;
 		for (int i = 0; i < size; ++i) {
-			if (other.inventory[i] == NULL) {
-				continue;
+			if (inventory[i] != NULL) {
+				delete inventory[i];
 			}
-			delete inventory[i];
 			inventory[i] = other.inventory[i]->clone();
 		}
 	}
 	return *this;
 }
 
+
 Character::~Character() {
 	for (int i = 0; i < size; ++i) {
-		if (inventory[i] == NULL) {
-			continue;
+		if (inventory[i] != NULL) {
+			delete inventory[i];
 		}
-		delete inventory[i];
 	}
 }
 
