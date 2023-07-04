@@ -11,7 +11,5 @@ std::string const& AMateria::getType() const {
 }
 
 AMateria::~AMateria() {
+	std::cout << "Destructor called, AMateria type: " << type << std::endl;
 }
-
-//void AMateria::use(ICharacter& target) {
-//}
