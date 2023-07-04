@@ -9,12 +9,7 @@ Character::Character(const std::string name) : name(name), idx(0) {
 
 Character::Character(const Character& other) : name(other.name) {
 	while (idx < other.idx) {
-
-//		AMateria
-//		inventory[0]
-//		AMateria::getType();
-//		other.inventory[idx]
-//		inventory[idx] = other.inventory[idx];
+		inventory[idx] = other.inventory[idx]->clone();
 		++idx;
 	}
 }
@@ -22,13 +17,11 @@ Character::Character(const Character& other) : name(other.name) {
 Character& Character::operator=(const Character& other) {
 	if (this != &other) {
 		name = other.name;
-		if (other.idx == 0) {
-			idx = 0;
-		}
-		else {
+		idx = 0;
+		if (other.idx != 0) {
 			while (idx < other.idx) {
-//				delete inventory[idx];
-//				inventory[idx] = other.inventory[idx];
+				delete inventory[idx];
+				inventory[idx] = other.inventory[idx]->clone();
 				++idx;
 			}
 		}
@@ -37,6 +30,9 @@ Character& Character::operator=(const Character& other) {
 }
 
 Character::~Character() {
+	for (int i = 0; i < idx; ++i) {
+		delete inventory[i];
+	}
 }
 
 const std::string& Character::getName() const {
@@ -61,6 +57,5 @@ void Character::use(int idx, ICharacter& target) {
 		std::cout << "Not available." << std::endl;
 		return;
 	}
-	(void) target;
-//	AMateria::use(inventory[idx]);
+	inventory[idx]->use(target);
 }
