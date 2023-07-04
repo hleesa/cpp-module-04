@@ -9,3 +9,9 @@ std::string const& AMateria::getType() const {
 	std::cout << "AMateria::getTtype() called, AMateria type: " << type << std::endl;
 	return type;
 }
+
+AMateria::~AMateria() {
+}
+
+//void AMateria::use(ICharacter& target) {
+//}
