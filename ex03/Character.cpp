@@ -1,60 +1,75 @@
 
 #include "Character.hpp"
 
-Character::Character() : name("none"), idx(0) {
+Character::Character() : name("none") {
 }
 
-Character::Character(const std::string name) : name(name), idx(0) {
+Character::Character(const std::string name) : name(name) {
 }
 
 Character::Character(const Character& other) : name(other.name) {
-	while (idx < other.idx) {
-		inventory[idx] = other.inventory[idx]->clone();
-		++idx;
+	for (int i = 0; i < size; ++i) {
+		if (other.inventory[i] == NULL) {
+			inventory[i] = other.inventory[i]->clone();
+		}
 	}
 }
 
 Character& Character::operator=(const Character& other) {
 	if (this != &other) {
 		name = other.name;
-		idx = 0;
-		if (other.idx != 0) {
-			while (idx < other.idx) {
-				delete inventory[idx];
-				inventory[idx] = other.inventory[idx]->clone();
-				++idx;
+		for (int i = 0; i < size; ++i) {
+			if (other.inventory[i] == NULL) {
+				continue;
 			}
+			delete inventory[i];
+			inventory[i] = other.inventory[i]->clone();
 		}
 	}
 	return *this;
 }
 
 Character::~Character() {
-	for (int i = 0; i < idx; ++i) {
+	for (int i = 0; i < size; ++i) {
+		if (inventory[i] == NULL) {
+			continue;
+		}
 		delete inventory[i];
 	}
 }
 
-const std::string& Character::getName() const {
+int Character::getEmptyIdx() {
+	int idx = 0;
+	while (idx < size && inventory[idx] != NULL) {
+		++idx;
+	}
+	return idx;
+}
+
+std::string const& Character::getName() const {
 	return name;
 }
 
 void Character::equip(AMateria* m) {
-	if (idx >= size) {
-		std::cout << "Inventory is full." << std::endl;
+	int idx = getEmptyIdx();
+	if (idx == size) {
+		std::cout << "equip: Inventory is full." << std::endl;
 		return;
 	}
 	inventory[idx] = m;
-	++idx;
 }
 
 void Character::unequip(int idx) {
-	(void) idx;
+	if (idx < 0 || size <= idx || inventory[idx] == NULL) {
+		std::cout << "unequip: Not available." << std::endl;
+		return;
+	}
+	inventory[idx] = NULL;
 }
 
 void Character::use(int idx, ICharacter& target) {
-	if (idx < 0 || idx >= size) {
-		std::cout << "Not available." << std::endl;
+	if (idx < 0 || size <= idx || inventory[idx] == NULL) {
+		std::cout << "use: Not available." << std::endl;
 		return;
 	}
 	inventory[idx]->use(target);

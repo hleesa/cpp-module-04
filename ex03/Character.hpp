@@ -1,6 +1,6 @@
 
-#ifndef CPP_HLEESA_CHARACTER_HPP
-#define CPP_HLEESA_CHARACTER_HPP
+#ifndef CHARACTER_HPP
+#define CHARACTER_HPP
 
 #include "ICharacter.hpp"
 
@@ -8,9 +8,10 @@ class Character : public ICharacter {
 
 private:
 	std::string name;
-	int idx;
 	static const int size = 4;
 	AMateria* inventory[size];
+
+	int getEmptyIdx();
 
 public:
 
@@ -24,7 +25,7 @@ public:
 
 	~Character();
 
-	const std::string& getName() const;
+	std::string const& getName() const;
 
 	void equip(AMateria* m);
 
@@ -34,5 +35,4 @@ public:
 
 };
 
-
-#endif //CPP_HLEESA_CHARACTER_HPP
+#endif //CHARACTER_HPP
