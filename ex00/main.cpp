@@ -20,7 +20,8 @@ int main() {
 	delete meta;
 	delete dog;
 	delete cat;
-	std::cout << "============================================================" << std::endl;
+	std::cout << "############################################################" << std::endl;
+	std::cout << "############################################################" << std::endl;
 	const WrongAnimal* wrongMeta = new WrongAnimal();
 	const WrongAnimal* wrongCat = new WrongCat();
 	std::cout << "============================================================" << std::endl;
