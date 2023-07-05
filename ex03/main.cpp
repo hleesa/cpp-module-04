@@ -86,6 +86,7 @@ void test3() {
 	cadet->equip(tmp);
 	cadet->equip(tmp);
 	cadet->equip(tmp);
+	delete tmp;
 	std::cout << "============================================================" << std::endl;
 	tmp = src->createMateria("hell ice");
 	cadet->equip(tmp);
@@ -121,8 +122,7 @@ int main() {
 
 //	test1();
 //	test2();
-//	test3();
-
-//	system("leaks abstarctclass");
+	test3();
+	system("leaks abstarctclass");
 	return 0;
 }

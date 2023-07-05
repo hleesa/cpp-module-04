@@ -12,6 +12,8 @@ private:
 
 	void printMessageCall(std::string msg);
 
+	void initLearned();
+
 	int getEmptyLearnedIdx();
 
 public:

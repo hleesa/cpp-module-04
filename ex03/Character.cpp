@@ -17,6 +17,32 @@ void Character::printMessageCall(std::string msg) {
 	std::cout << msg << " called, Character name: " << name << std::endl;
 }
 
+int Character::getEmptyInvenIdx() {
+	int i;
+	for (i = 0; i < size; ++i) {
+		if (inventory[i] == NULL) {
+			break;
+		}
+	}
+	return i;
+}
+
+bool Character::isDuplicateMateria(AMateria* m) {
+	for (int i = 0; i < size; ++i) {
+		if (inventory[i] == m) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Character::isValidIdx(int idx) {
+	if (idx < 0 || size <= idx || inventory[idx] == NULL) {
+		return true;
+	}
+	return false;
+}
+
 Character::Character() : name("none"), rIdx(0) {
 	printMessageCall("Default constructor");
 	initInventory();
@@ -73,39 +99,18 @@ Character::~Character() {
 	}
 }
 
-int Character::getEmptyInvenIdx() {
-	int i;
-	for (i = 0; i < size; ++i) {
-		if (inventory[i] == NULL) {
-			break;
-		}
-	}
-	return i;
-}
-
-bool Character::isDuplicateMateria(AMateria* m) {
-	for (int i = 0; i < size; ++i) {
-		if (inventory[i] == m) {
-			return true;
-		}
-	}
-	return false;
-}
-
-
 std::string const& Character::getName() const {
 	return name;
 }
 
 void Character::equip(AMateria* m) {
-	if (m == NULL || isDuplicateMateria(m) ) {
+	if (m == NULL || isDuplicateMateria(m)) {
 		std::cout << "< equip: Invalid materia >" << std::endl;
 		return;
 	}
 	int idx = getEmptyInvenIdx();
 	if (idx == size) {
 		std::cout << "< equip: Inventory is full >" << std::endl;
-		remainingMateria[rIdx++] = m;
 		return;
 	}
 	std::cout << "< equip " << m->getType() << ", " << "Character name: " << name << " >" << std::endl;
@@ -113,7 +118,7 @@ void Character::equip(AMateria* m) {
 }
 
 void Character::unequip(int idx) {
-	if (idx < 0 || size <= idx || inventory[idx] == NULL) {
+	if (!isValidIdx(idx)) {
 		std::cout << "< unequip: Not available>" << std::endl;
 		return;
 	}
@@ -123,7 +128,7 @@ void Character::unequip(int idx) {
 }
 
 void Character::use(int idx, ICharacter& target) {
-	if (idx < 0 || size <= idx || inventory[idx] == NULL) {
+	if (!isValidIdx(idx)) {
 		std::cout << "< use(): Not available >" << std::endl;
 		return;
 	}

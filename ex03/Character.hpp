@@ -24,6 +24,8 @@ private:
 
 	int getEmptyInvenIdx();
 
+	bool isValidIdx(int idx);
+
 public:
 
 	Character();
