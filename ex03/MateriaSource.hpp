@@ -7,13 +7,13 @@
 class MateriaSource : public IMateriaSource {
 
 private:
-	int idx;
+//	static int idx;
 	static const int size = 4;
-	static const int leftoverSize = 12345678;
+//	static const int maxSize = 12345678;
 	AMateria* learned[size];
-	AMateria* leftover[leftoverSize];
+//	static AMateria* allMateria[maxSize];
 
-	int getEmptyIdx();
+	int getEmptyLearnedIdx();
 
 public:
 

@@ -10,8 +10,15 @@ private:
 	std::string name;
 	static const int size = 4;
 	AMateria* inventory[size];
+	int idx;
+	static const int remainingSize = 1234;
+	AMateria* remainingMateria[remainingSize];
 
-	int getEmptyIdx();
+	void initInventory();
+
+	void initRemainigMateria();
+
+	int getEmptyInvenIdx();
 
 public:
 

@@ -1,19 +1,32 @@
 
 #include "Character.hpp"
 
-Character::Character() : name("none") {
+void Character::initInventory() {
 	for (int i = 0; i < size; ++i) {
 		inventory[i] = NULL;
 	}
 }
 
-Character::Character(const std::string name) : name(name) {
-	for (int i = 0; i < size; ++i) {
-		inventory[i] = NULL;
+void Character::initRemainigMateria() {
+	for (int i = 0; i < remainingSize; ++i) {
+		remainingMateria[i] = NULL;
 	}
 }
 
-Character::Character(const Character& other) : name(other.name) {
+Character::Character() : name("none"), idx(0) {
+	std::cout << "Default constructor called, Character name: " << name << std::endl;
+	initInventory();
+	initRemainigMateria();
+}
+
+Character::Character(const std::string name) : name(name), idx(0) {
+	std::cout << "parameterized constructor called, Character name: " << name << std::endl;
+	initInventory();
+	initRemainigMateria();
+}
+
+Character::Character(const Character& other) : name(other.name), idx(0) {
+	std::cout << "Copy constructor called, Character name: " << name << std::endl;
 	for (int i = 0; i < size; ++i) {
 		if (other.inventory[i] == NULL) {
 			inventory[i] = NULL;
@@ -22,30 +35,43 @@ Character::Character(const Character& other) : name(other.name) {
 			inventory[i] = other.inventory[i]->clone();
 		}
 	}
+	initRemainigMateria();
 }
 
 Character& Character::operator=(const Character& other) {
+	std::cout << "Copy assignment operator called, Character name: " << name << std::endl;
 	if (this != &other) {
 		name = other.name;
 		for (int i = 0; i < size; ++i) {
 			if (inventory[i] != NULL) {
 				delete inventory[i];
 			}
-			inventory[i] = other.inventory[i]->clone();
+			if (other.inventory[i] == NULL) {
+				inventory[i] = NULL;
+			}
+			else {
+				inventory[i] = other.inventory[i]->clone();
+			}
 		}
 	}
 	return *this;
 }
 
 Character::~Character() {
+	std::cout << "Destructor called, Character name: " << name << std::endl;
 	for (int i = 0; i < size; ++i) {
 		if (inventory[i] != NULL) {
 			delete inventory[i];
 		}
 	}
+	for (int i = 0; i < idx; ++i) {
+		if (remainingMateria[i] != NULL) {
+			delete remainingMateria[i];
+		}
+	}
 }
 
-int Character::getEmptyIdx() {
+int Character::getEmptyInvenIdx() {
 	int idx = 0;
 	while (idx < size && inventory[idx] != NULL) {
 		++idx;
@@ -58,7 +84,7 @@ std::string const& Character::getName() const {
 }
 
 void Character::equip(AMateria* m) {
-	int idx = getEmptyIdx();
+	int idx = getEmptyInvenIdx();
 	if (idx == size) {
 		std::cout << "equip: Inventory is full." << std::endl;
 		return;
@@ -71,7 +97,7 @@ void Character::unequip(int idx) {
 		std::cout << "unequip: Not available." << std::endl;
 		return;
 	}
-
+	remainingMateria[Character::idx++] = inventory[idx];
 	inventory[idx] = NULL;
 }
 
