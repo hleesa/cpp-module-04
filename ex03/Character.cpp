@@ -17,29 +17,27 @@ void Character::printMessageCall(std::string msg) {
 	std::cout << msg << " called, Character name: " << name << std::endl;
 }
 
-Character::Character() : name("none"), idx(0) {
+Character::Character() : name("none"), rIdx(0) {
 	printMessageCall("Default constructor");
 	initInventory();
 	initRemainigMateria();
 }
 
-Character::Character(const std::string name) : name(name), idx(0) {
+Character::Character(const std::string name) : name(name), rIdx(0) {
 	printMessageCall("Parameterized constructor");
 	initInventory();
 	initRemainigMateria();
 }
 
-Character::Character(const Character& other) : name(other.name), idx(0) {
+Character::Character(const Character& other) : name(other.name), rIdx(0) {
 	printMessageCall("Copy constructor called");
+	initInventory();
+	initRemainigMateria();
 	for (int i = 0; i < size; ++i) {
-		if (other.inventory[i] == NULL) {
-			inventory[i] = NULL;
-		}
-		else {
+		if (other.inventory[i] != NULL) {
 			inventory[i] = other.inventory[i]->clone();
 		}
 	}
-	initRemainigMateria();
 }
 
 Character& Character::operator=(const Character& other) {
@@ -68,7 +66,7 @@ Character::~Character() {
 			delete inventory[i];
 		}
 	}
-	for (int i = 0; i < idx; ++i) {
+	for (int i = 0; i < rIdx; ++i) {
 		if (remainingMateria[i] != NULL) {
 			delete remainingMateria[i];
 		}
@@ -76,11 +74,13 @@ Character::~Character() {
 }
 
 int Character::getEmptyInvenIdx() {
-	int idx = 0;
-	while (idx < size && inventory[idx] != NULL) {
-		++idx;
+	int i;
+	for (i = 0; i < size; ++i) {
+		if (inventory[i] == NULL) {
+			break;
+		}
 	}
-	return idx;
+	return i;
 }
 
 std::string const& Character::getName() const {
@@ -88,28 +88,33 @@ std::string const& Character::getName() const {
 }
 
 void Character::equip(AMateria* m) {
-	int idx = getEmptyInvenIdx();
-	if (idx == size) {
-		std::cout << "<equip: Inventory is full>" << std::endl;
+	if (m == NULL) {
+		std::cout << "< equip: Invalid materia >" << std::endl;
 		return;
 	}
-	std::cout << "<equip " << m->getType() << ", " << "Character name: " << name << ">" << std::endl;
+	int idx = getEmptyInvenIdx();
+	if (idx == size) {
+		std::cout << "< equip: Inventory is full >" << std::endl;
+		remainingMateria[rIdx++] = m;
+		return;
+	}
+	std::cout << "< equip " << m->getType() << ", " << "Character name: " << name << " >" << std::endl;
 	inventory[idx] = m;
 }
 
 void Character::unequip(int idx) {
 	if (idx < 0 || size <= idx || inventory[idx] == NULL) {
-		std::cout << "<unequip: Not available>" << std::endl;
+		std::cout << "< unequip: Not available>" << std::endl;
 		return;
 	}
-	std::cout << "<unequip " << inventory[idx]->getType() << ", " << "Character name: " << name << ">" << std::endl;
-	remainingMateria[Character::idx++] = inventory[idx];
+	std::cout << "< unequip " << inventory[idx]->getType() << ", " << "Character name: " << name << " >" << std::endl;
+	remainingMateria[rIdx++] = inventory[idx];
 	inventory[idx] = NULL;
 }
 
 void Character::use(int idx, ICharacter& target) {
 	if (idx < 0 || size <= idx || inventory[idx] == NULL) {
-		std::cout << "<use(): Not available>" << std::endl;
+		std::cout << "< use(): Not available >" << std::endl;
 		return;
 	}
 	inventory[idx]->use(target);

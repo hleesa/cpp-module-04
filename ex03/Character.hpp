@@ -10,7 +10,7 @@ private:
 	std::string name;
 	static const int size = 4;
 	AMateria* inventory[size];
-	int idx;
+	int rIdx;
 	static const int remainingSize = 1234;
 	AMateria* remainingMateria[remainingSize];
 

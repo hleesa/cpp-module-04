@@ -1,10 +1,6 @@
 
 #include "MateriaSource.hpp"
 
-//int MateriaSource::idx = 0;
-
-//AMateria* MateriaSource::allMateria[] = {NULL,};
-
 void MateriaSource::printMessageCall(std::string msg) {
 	std::cout << msg << " called, MateriaSource" << std::endl;
 }
@@ -24,7 +20,6 @@ MateriaSource::MateriaSource(const MateriaSource& other) {
 		}
 		else {
 			learned[i] = other.learned[i]->clone();
-//			allMateria[idx++] = learned[i];
 		}
 	}
 }
@@ -38,7 +33,6 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& other) {
 			}
 			else {
 				learned[i] = other.learned[i]->clone();
-//				allMateria[idx++] = learned[i];
 			}
 		}
 	}
@@ -50,13 +44,8 @@ MateriaSource::~MateriaSource() {
 	for (int i = 0; i < size; ++i) {
 		if (learned[i] != NULL)
 			delete learned[i];
+
 	}
-//	std::cout << idx << '\n';
-//	for (int i = 0; i < idx; ++i) {
-//		std::cout << allMateria[i] << ", " << i << std::endl;
-//		if (allMateria[i] != NULL)
-//			delete allMateria[i];
-//	}
 }
 
 int MateriaSource::getEmptyLearnedIdx() {
@@ -70,23 +59,24 @@ int MateriaSource::getEmptyLearnedIdx() {
 void MateriaSource::learnMateria(AMateria* m) {
 	int i = getEmptyLearnedIdx();
 	if (i == size) {
-		std::cout << "learnMateria: You can't learn anymore" << std::endl;
+		std::cout << "[ You can't learn anymore, MateriaSource ]" << std::endl;
+		delete m;
 		return;
 	}
-	std::cout << "[learn " << m->getType() << ", MateriaSource]" << std::endl;
+	std::cout << "[ learn " << m->getType() << ", MateriaSource ]" << std::endl;
 	learned[i] = m;
-//	allMateria[idx++] = m;
 }
 
 AMateria* MateriaSource::createMateria(const std::string& type) {
 	for (int i = 0; i < size; ++i) {
+		if (learned[i] == NULL) {
+			continue;
+		}
 		if (learned[i]->getType() == type) {
-//			allMateria[idx++] = learned[i]->clone();
-//			std::cout << "create: " << allMateria[idx - 1] << '\n';
-			std::cout << "[create " << learned[i]->getType() << ", MateriaSource]" << std::endl;
-//			return allMateria[idx - 1];
+			std::cout << "[ create " << learned[i]->getType() << ", MateriaSource ]" << std::endl;
 			return learned[i]->clone();
 		}
 	}
+	std::cout << "[ Can't create " << type << ", MateriaSource ]" << std::endl;
 	return 0;
 }

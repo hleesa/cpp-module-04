@@ -4,8 +4,7 @@
 #include "Ice.hpp"
 #include "MateriaSource.hpp"
 
-int main() {
-
+void test1() {
 	std::cout << "############################################################"<< std::endl;
 	std::cout << "############################################################"<< std::endl;
 	IMateriaSource *src = new MateriaSource();
@@ -26,25 +25,104 @@ int main() {
 	delete bob;
 	delete me;
 	delete src;
+	std::cout << "############################################################"<< std::endl;
+	std::cout << "############################################################"<< std::endl;
+}
+
+void test2() {
+	std::cout << "############################################################"<< std::endl;
+	std::cout << "############################################################"<< std::endl;
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
 	std::cout << "============================================================" << std::endl;
-//	ICharacter* my = new Character("my");
-//	*my = *bob;
-//	my->use(0, *me);
-//	me->unequip(1);
-//	me->unequip(0);
-//	salee.equip(tmp);
-//	salee.use(0, *me);
+	Character* cadet = new Character("cadet");
+	Character* bocal = new Character("bocal");
+	std::cout << "============================================================" << std::endl;
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	cadet->equip(tmp);
+	tmp = src->createMateria("cure");
+	cadet->equip(tmp);
+
+	std::cout << "============================================================" << std::endl;
+	cadet->use(0, *bocal);
+	cadet->use(1, *bocal);
+	std::cout << "============================================================" << std::endl;
+	Character member = *cadet;
+	Character user;
+	user = member;
+	std::cout << "============================================================" << std::endl;
+	member.use(0, *bocal);
+	member.use(1, *bocal);
+	user.use(0, *bocal);
+	user.use(1, *bocal);
+	std::cout << "============================================================" << std::endl;
+	delete cadet;
+	member.use(0, *bocal);
+	member.use(1, *bocal);
+	user.use(0, *bocal);
+	user.use(1, *bocal);
+	std::cout << "============================================================" << std::endl;
+
+	delete src;
+	delete bocal;
+	std::cout << "############################################################"<< std::endl;
+	std::cout << "############################################################"<< std::endl;
+}
+
+void test3() {
+	std::cout << "############################################################"<< std::endl;
+	std::cout << "############################################################"<< std::endl;
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	std::cout << "============================================================" << std::endl;
+	ICharacter* cadet = new Character("cadet");
+	ICharacter* bocal = new Character("bocal");
+	std::cout << "============================================================" << std::endl;
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	cadet->equip(tmp);
+	cadet->equip(tmp);
+	cadet->equip(tmp);
+	std::cout << "============================================================" << std::endl;
+	tmp = src->createMateria("hell ice");
+	cadet->equip(tmp);
+	std::cout << "============================================================" << std::endl;
+	tmp = src->createMateria("ice");
+	cadet->equip(tmp);
+	cadet->equip(tmp);
+	std::cout << "============================================================" << std::endl;
+	cadet->use(2, *bocal);
+	cadet->unequip(2);
+	cadet->unequip(2);
+	cadet->use(2, *bocal);
+	std::cout << "============================================================" << std::endl;
+	tmp = src->createMateria("cure");
+	cadet->equip(tmp);
+	cadet->use(2, *bocal);
+	std::cout << "============================================================" << std::endl;
+
+	src->learnMateria(new Ice());
+	src->learnMateria(new Ice());
+	src->learnMateria(new Ice());
+
+	delete src;
+	delete cadet;
+//	delete bocal;
+	std::cout << "############################################################"<< std::endl;
+	std::cout << "############################################################"<< std::endl;
+}
 
 
+int main() {
 
-//	ICharacter *me = new Character("me");
-//	std::cout << me << '\n';
-//	Character you = Character(*me);
-//	std::cout << you << '\n';
-//	Character a = Character("a");
-//	std::cout << &a << '\n';
-//	Character b = a;
-//	std::cout << &b << '\n';
+//	test1();
+//	test2();
+	test3();
+
+
 
 //	system("leaks abstarctclass");
 	return 0;

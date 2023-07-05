@@ -7,11 +7,8 @@
 class MateriaSource : public IMateriaSource {
 
 private:
-//	static int idx;
 	static const int size = 4;
-//	static const int maxSize = 12345678;
 	AMateria* learned[size];
-//	static AMateria* allMateria[maxSize];
 
 	void printMessageCall(std::string msg);
 
