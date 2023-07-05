@@ -1,20 +1,24 @@
 
 #include "Brain.hpp"
 
+void Brain::printMessageCall(std::string msg) {
+	std::cout << msg << " called, Brain" << std::endl;
+}
+
 Brain::Brain() {
-	std::cout << "Default constructor called, Brain" << std::endl;
+	printMessageCall("Default constructor");
 	for (size_t i = 0; i < size; ++i) {
 		ideas[i] = i + 1;
 	}
 }
 
 Brain::Brain(const Brain& other) {
-	std::cout << "Copy constructor called, Brain" << std::endl;
+	printMessageCall("Copy constructor");
 	operator=(other);
 }
 
 Brain& Brain::operator=(const Brain& other) {
-	std::cout << "Copy assignment operator called, Brain" << std::endl;
+	printMessageCall("Copy assignment operator");
 	if (this != &other) {
 		for (size_t i = 0; i < size; ++i) {
 			ideas[i] = other.ideas[i];
@@ -24,5 +28,5 @@ Brain& Brain::operator=(const Brain& other) {
 }
 
 Brain::~Brain() {
-	std::cout << "Destructor called, Brain" << std::endl;
+	printMessageCall("Destructor");
 }

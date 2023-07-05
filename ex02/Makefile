@@ -16,7 +16,7 @@ DEPS = $(SRCS:.cpp=.d)
 -include $(DEPS)
 
 
-NAME = worldonfire
+NAME = abstract
 
 all: $(NAME)
 

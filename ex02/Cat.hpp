@@ -10,8 +10,9 @@ class Cat : public Animal {
 private:
 	Brain *brain;
 
-public:
+	void printMessageCall(std::string msg);
 
+public:
 	Cat();
 
 	Cat(const Cat& other);

@@ -6,6 +6,9 @@
 
 class Animal {
 
+private:
+	void printMessageCall(std::string msg);
+
 protected:
 	std::string type;
 
