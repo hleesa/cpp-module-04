@@ -12,6 +12,8 @@ class AMateria {
 protected:
 	std::string type;
 
+	void printMessageCall(std::string msg);
+
 public:
 	AMateria(std::string const& type);
 

@@ -18,6 +18,8 @@ private:
 
 	void initRemainigMateria();
 
+	void printMessageCall(std::string msg);
+
 	int getEmptyInvenIdx();
 
 public:

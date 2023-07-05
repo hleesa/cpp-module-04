@@ -13,20 +13,24 @@ void Character::initRemainigMateria() {
 	}
 }
 
+void Character::printMessageCall(std::string msg) {
+	std::cout << msg << " called, Character name: " << name << std::endl;
+}
+
 Character::Character() : name("none"), idx(0) {
-	std::cout << "Default constructor called, Character name: " << name << std::endl;
+	printMessageCall("Default constructor");
 	initInventory();
 	initRemainigMateria();
 }
 
 Character::Character(const std::string name) : name(name), idx(0) {
-	std::cout << "parameterized constructor called, Character name: " << name << std::endl;
+	printMessageCall("Parameterized constructor");
 	initInventory();
 	initRemainigMateria();
 }
 
 Character::Character(const Character& other) : name(other.name), idx(0) {
-	std::cout << "Copy constructor called, Character name: " << name << std::endl;
+	printMessageCall("Copy constructor called");
 	for (int i = 0; i < size; ++i) {
 		if (other.inventory[i] == NULL) {
 			inventory[i] = NULL;
@@ -39,7 +43,7 @@ Character::Character(const Character& other) : name(other.name), idx(0) {
 }
 
 Character& Character::operator=(const Character& other) {
-	std::cout << "Copy assignment operator called, Character name: " << name << std::endl;
+	printMessageCall("Copy assignment operator");
 	if (this != &other) {
 		name = other.name;
 		for (int i = 0; i < size; ++i) {
@@ -58,7 +62,7 @@ Character& Character::operator=(const Character& other) {
 }
 
 Character::~Character() {
-	std::cout << "Destructor called, Character name: " << name << std::endl;
+	printMessageCall("Destructor");
 	for (int i = 0; i < size; ++i) {
 		if (inventory[i] != NULL) {
 			delete inventory[i];
