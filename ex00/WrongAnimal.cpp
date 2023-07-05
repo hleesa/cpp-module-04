@@ -1,16 +1,20 @@
 
 #include "WrongAnimal.hpp"
 
+void WrongAnimal::printMessageCall(std::string msg) {
+	std::cout << msg << " called, WrongAnimal type: " << type << std::endl;
+}
+
 WrongAnimal::WrongAnimal() : type("none") {
-	std::cout << "Default constructor called, WrongAnimal type: " << type << std::endl;
+	printMessageCall("Default constructor");
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal& other) : type(other.type) {
-	std::cout << "Copy constructor called, WrongAnimal type: " << type << std::endl;
+	printMessageCall("Copy constructor");
 }
 
 WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other) {
-	std::cout << "Copy assignment operator called, WrongAnimal type: " << type << std::endl;
+	printMessageCall("Copy assignment operator");
 	if (this != &other) {
 		type = other.type;
 	}
@@ -18,7 +22,7 @@ WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other) {
 }
 
 WrongAnimal::~WrongAnimal() {
-	std::cout << "Destructor called, WrongAnimal type: " << type << std::endl;
+	printMessageCall("Destructor");
 }
 
 std::string WrongAnimal::getType() const {

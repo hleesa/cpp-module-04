@@ -6,8 +6,10 @@
 
 class Dog : public Animal {
 
-public:
+private:
+	void printMessageCall(std::string msg);
 
+public:
 	Dog();
 
 	Dog(const Dog& other);

@@ -1,17 +1,21 @@
 
 #include "WrongCat.hpp"
 
+void WrongCat::printMessageCall(std::string msg) {
+	std::cout << msg << " called, WrongCat type: " << type << std::endl;
+}
+
 WrongCat::WrongCat() : WrongAnimal() {
 	type = "WrongCat";
-	std::cout << "Default constructor called, WrongCat type: " << type << std::endl;
+	printMessageCall("Default constructor");
 }
 
 WrongCat::WrongCat(const WrongCat& other) : WrongAnimal(other) {
-	std::cout << "Copy constructor called, WrongCat type: " << type << std::endl;
+	printMessageCall("Copy constructor");
 }
 
 WrongCat& WrongCat::operator=(const WrongCat& other) {
-	std::cout << "Copy assignment operator called, WrongCat type: " << type << std::endl;
+	printMessageCall("Copy assignment operator");
 	if (this != &other) {
 		WrongAnimal::operator=(other);
 	}
@@ -19,7 +23,7 @@ WrongCat& WrongCat::operator=(const WrongCat& other) {
 }
 
 WrongCat::~WrongCat() {
-	std::cout << "Destructor called, WrongCat type: " << type << std::endl;
+	printMessageCall("Destructor");
 }
 
 void WrongCat::makeWrongSound() const {

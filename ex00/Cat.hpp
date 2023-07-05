@@ -6,8 +6,10 @@
 
 class Cat : public Animal {
 
-public:
+private:
+	void printMessageCall(std::string msg);
 
+public:
 	Cat();
 
 	Cat(const Cat& other);

@@ -6,8 +6,10 @@
 
 class WrongCat : public WrongAnimal {
 
-public:
+private:
+	void printMessageCall(std::string msg);
 
+public:
 	WrongCat();
 
 	WrongCat(const WrongCat& other);

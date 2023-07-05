@@ -6,6 +6,9 @@
 
 class WrongAnimal {
 
+private:
+	void printMessageCall(std::string msg);
+
 protected:
 	std::string type;
 

@@ -1,17 +1,21 @@
 
 #include "Dog.hpp"
 
+void Dog::printMessageCall(std::string msg) {
+	std::cout << msg << " called, Dog type: " << type << std::endl;
+}
+
 Dog::Dog() : Animal() {
 	type = "Dog";
-	std::cout << "Default constructor called, Dog type: " << type << std::endl;
+	printMessageCall("Default constructor");
 }
 
 Dog::Dog(const Dog& other) : Animal(other) {
-	std::cout << "Copy constructor called, Dog type: " << type << std::endl;
+	printMessageCall("Copy constructor");
 }
 
 Dog& Dog::operator=(const Dog& other) {
-	std::cout << "Copy assignment operator called, Dog type: " << type << std::endl;
+	printMessageCall("Copy assignment operator");
 	if (this != &other) {
 		Animal::operator=(other);
 	}
@@ -19,7 +23,7 @@ Dog& Dog::operator=(const Dog& other) {
 }
 
 Dog::~Dog() {
-	std::cout << "Destructor called, Dog type: " << type << std::endl;
+	printMessageCall("Destructor");
 }
 
 void Dog::makeSound() const {
