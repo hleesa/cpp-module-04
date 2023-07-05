@@ -1,16 +1,20 @@
 
 #include "Animal.hpp"
 
+void Animal::printMessageCall(std::string msg) {
+	std::cout << msg << " called, Animal type: " << type << std::endl;
+}
+
 Animal::Animal() : type("none") {
-	std::cout << "Default constructor called, Animal type: " << type << std::endl;
+	printMessageCall("Default constructor");
 }
 
 Animal::Animal(const Animal& other) : type(other.type) {
-	std::cout << "Copy constructor called, Animal type: " << type << std::endl;
+	printMessageCall("Copy constructor");
 }
 
 Animal& Animal::operator=(const Animal& other) {
-	std::cout << "Copy assignment operator called, Animal type: " << type << std::endl;
+	printMessageCall("Copy assignment operator");
 	if (this != &other) {
 		type = other.type;
 	}
@@ -18,7 +22,7 @@ Animal& Animal::operator=(const Animal& other) {
 }
 
 Animal::~Animal() {
-	std::cout << "Destructor called, Animal type: " << type << std::endl;
+	printMessageCall("Destructor");
 }
 
 std::string Animal::getType() const {

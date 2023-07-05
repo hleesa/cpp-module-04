@@ -12,6 +12,8 @@ private:
 	static const size_t size = 100;
 	std::string ideas[size];
 
+	void printMessageCall(std::string msg);
+
 public:
 	Brain();
 

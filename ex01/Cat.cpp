@@ -1,14 +1,18 @@
 
 #include "Cat.hpp"
 
+void Cat::printMessageCall(std::string msg) {
+	std::cout << msg << " called, Cat type: " << type << std::endl;
+}
+
 Cat::Cat() : Animal() {
 	type = "Cat";
-	std::cout << "Default constructor called, Cat type: " << type <<  std::endl;
+	printMessageCall("Default constructor");
 	brain = new Brain;
 }
 
 Cat::Cat(const Cat& other) : Animal(other) {
-	std::cout << "Copy constructor called, Cat type: " << type <<  std::endl;
+	printMessageCall("Copy constructor");
 	if (other.brain == NULL) {
 		brain = NULL;
 	}
@@ -19,7 +23,7 @@ Cat::Cat(const Cat& other) : Animal(other) {
 }
 
 Cat& Cat::operator=(const Cat& other) {
-	std::cout << "Copy assignment operator called, Cat type: " << type <<  std::endl;
+	printMessageCall("Copy assignment operator");
 	if (this != &other) {
 		Animal::operator=(other);
 		delete brain;
@@ -35,7 +39,7 @@ Cat& Cat::operator=(const Cat& other) {
 }
 
 Cat::~Cat() {
-	std::cout << "Destructor called, Cat type: " << type <<  std::endl;
+	printMessageCall("Destructor");
 	delete brain;
 }
 

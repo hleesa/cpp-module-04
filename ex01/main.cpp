@@ -25,6 +25,6 @@ int main() {
 		delete animals[i];
 	}
 	std::cout << "================================================" << std::endl;
-	system("leaks worldonfire");
+//	system("leaks worldonfire");
 	return 0;
 }
