@@ -20,6 +20,8 @@ private:
 
 	void printMessageCall(std::string msg);
 
+	bool isDuplicateMateria(AMateria* m);
+
 	int getEmptyInvenIdx();
 
 public:

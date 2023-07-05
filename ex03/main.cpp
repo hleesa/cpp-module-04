@@ -92,6 +92,9 @@ void test3() {
 	std::cout << "============================================================" << std::endl;
 	tmp = src->createMateria("ice");
 	cadet->equip(tmp);
+	tmp = src->createMateria("ice");
+	cadet->equip(tmp);
+	tmp = src->createMateria("ice");
 	cadet->equip(tmp);
 	std::cout << "============================================================" << std::endl;
 	cadet->use(2, *bocal);
@@ -103,26 +106,22 @@ void test3() {
 	cadet->equip(tmp);
 	cadet->use(2, *bocal);
 	std::cout << "============================================================" << std::endl;
-
 	src->learnMateria(new Ice());
 	src->learnMateria(new Ice());
 	src->learnMateria(new Ice());
-
+	std::cout << "============================================================" << std::endl;
 	delete src;
 	delete cadet;
-//	delete bocal;
+	delete bocal;
 	std::cout << "############################################################"<< std::endl;
 	std::cout << "############################################################"<< std::endl;
 }
-
 
 int main() {
 
 //	test1();
 //	test2();
-	test3();
-
-
+//	test3();
 
 //	system("leaks abstarctclass");
 	return 0;

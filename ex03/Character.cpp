@@ -83,12 +83,22 @@ int Character::getEmptyInvenIdx() {
 	return i;
 }
 
+bool Character::isDuplicateMateria(AMateria* m) {
+	for (int i = 0; i < size; ++i) {
+		if (inventory[i] == m) {
+			return true;
+		}
+	}
+	return false;
+}
+
+
 std::string const& Character::getName() const {
 	return name;
 }
 
 void Character::equip(AMateria* m) {
-	if (m == NULL) {
+	if (m == NULL || isDuplicateMateria(m) ) {
 		std::cout << "< equip: Invalid materia >" << std::endl;
 		return;
 	}
