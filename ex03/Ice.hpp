@@ -6,6 +6,9 @@
 
 class Ice : public AMateria {
 
+private:
+	void printMessageCall(std::string msg);
+
 public:
 	Ice();
 

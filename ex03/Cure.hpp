@@ -6,6 +6,9 @@
 
 class Cure : public AMateria{
 
+private:
+	void printMessageCall(std::string msg);
+
 public:
 	Cure();
 
