@@ -90,24 +90,26 @@ std::string const& Character::getName() const {
 void Character::equip(AMateria* m) {
 	int idx = getEmptyInvenIdx();
 	if (idx == size) {
-		std::cout << "equip: Inventory is full." << std::endl;
+		std::cout << "<equip: Inventory is full>" << std::endl;
 		return;
 	}
+	std::cout << "<equip " << m->getType() << ", " << "Character name: " << name << ">" << std::endl;
 	inventory[idx] = m;
 }
 
 void Character::unequip(int idx) {
 	if (idx < 0 || size <= idx || inventory[idx] == NULL) {
-		std::cout << "unequip: Not available." << std::endl;
+		std::cout << "<unequip: Not available>" << std::endl;
 		return;
 	}
+	std::cout << "<unequip " << inventory[idx]->getType() << ", " << "Character name: " << name << ">" << std::endl;
 	remainingMateria[Character::idx++] = inventory[idx];
 	inventory[idx] = NULL;
 }
 
 void Character::use(int idx, ICharacter& target) {
 	if (idx < 0 || size <= idx || inventory[idx] == NULL) {
-		std::cout << "use(): Not available." << std::endl;
+		std::cout << "<use(): Not available>" << std::endl;
 		return;
 	}
 	inventory[idx]->use(target);

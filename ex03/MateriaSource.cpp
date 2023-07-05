@@ -5,13 +5,19 @@
 
 //AMateria* MateriaSource::allMateria[] = {NULL,};
 
+void MateriaSource::printMessageCall(std::string msg) {
+	std::cout << msg << " called, MateriaSource" << std::endl;
+}
+
 MateriaSource::MateriaSource() {
+	printMessageCall("Default constructor");
 	for (int i = 0; i < size; ++i) {
 		learned[i] = NULL;
 	}
 }
 
 MateriaSource::MateriaSource(const MateriaSource& other) {
+	printMessageCall("Copy constructor called");
 	for (int i = 0; i < size; ++i) {
 		if (other.learned[i] == NULL) {
 			learned[i] = NULL;
@@ -24,6 +30,7 @@ MateriaSource::MateriaSource(const MateriaSource& other) {
 }
 
 MateriaSource& MateriaSource::operator=(const MateriaSource& other) {
+	printMessageCall("Copy assignment operator");
 	if (this != &other) {
 		for (int i = 0; i < size; ++i) {
 			if (other.learned[i] == NULL) {
@@ -39,6 +46,7 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& other) {
 }
 
 MateriaSource::~MateriaSource() {
+	printMessageCall("Destructor");
 	for (int i = 0; i < size; ++i) {
 		if (learned[i] != NULL)
 			delete learned[i];
@@ -65,7 +73,7 @@ void MateriaSource::learnMateria(AMateria* m) {
 		std::cout << "learnMateria: You can't learn anymore" << std::endl;
 		return;
 	}
-	std::cout << "learn: " << m << '\n';
+	std::cout << "[learn " << m->getType() << ", MateriaSource]" << std::endl;
 	learned[i] = m;
 //	allMateria[idx++] = m;
 }
@@ -75,6 +83,7 @@ AMateria* MateriaSource::createMateria(const std::string& type) {
 		if (learned[i]->getType() == type) {
 //			allMateria[idx++] = learned[i]->clone();
 //			std::cout << "create: " << allMateria[idx - 1] << '\n';
+			std::cout << "[create " << learned[i]->getType() << ", MateriaSource]" << std::endl;
 //			return allMateria[idx - 1];
 			return learned[i]->clone();
 		}

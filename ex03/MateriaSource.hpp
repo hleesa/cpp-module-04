@@ -13,6 +13,8 @@ private:
 	AMateria* learned[size];
 //	static AMateria* allMateria[maxSize];
 
+	void printMessageCall(std::string msg);
+
 	int getEmptyLearnedIdx();
 
 public:
