@@ -9,10 +9,11 @@ class ICharacter;
 
 class AMateria {
 
+private:
+	void printMessageCall(std::string msg);
+
 protected:
 	std::string type;
-
-	void printMessageCall(std::string msg);
 
 public:
 	AMateria(std::string const& type);
@@ -24,7 +25,6 @@ public:
 	virtual AMateria* clone() const = 0;
 
 	virtual void use(ICharacter& target) = 0;
-
 };
 
 #endif //AMATERIA_HPP
