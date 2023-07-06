@@ -30,3 +30,10 @@ Brain& Brain::operator=(const Brain& other) {
 Brain::~Brain() {
 	printMessageCall("Destructor");
 }
+
+void Brain::showIdeas() {
+	for (size_t i = 0; i < size; ++i) {
+		std::cout << i << " ";
+	}
+	std::cout << std::endl;
+}

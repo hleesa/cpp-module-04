@@ -8,7 +8,7 @@ void Cat::printMessageCall(std::string msg) {
 Cat::Cat() : Animal() {
 	type = "Cat";
 	printMessageCall("Default constructor");
-	brain = new Brain;
+	brain = new Brain();
 }
 
 Cat::Cat(const Cat& other) : Animal(other) {
@@ -17,7 +17,7 @@ Cat::Cat(const Cat& other) : Animal(other) {
 		brain = NULL;
 	}
 	else {
-		brain = new Brain;
+		brain = new Brain();
 		*brain = *other.brain;
 	}
 }
@@ -31,7 +31,7 @@ Cat& Cat::operator=(const Cat& other) {
 			brain = NULL;
 		}
 		else {
-			brain = new Brain;
+			brain = new Brain();
 			*brain = *other.brain;
 		}
 	}

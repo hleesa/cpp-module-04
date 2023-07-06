@@ -2,8 +2,6 @@
 #ifndef BRAIN_HPP
 #define BRAIN_HPP
 
-#include <stddef.h>
-#include <string>
 #include <iostream>
 
 class Brain {
@@ -23,6 +21,7 @@ public:
 
 	~Brain();
 
+	void showIdeas();
 };
 
 

@@ -8,7 +8,7 @@ void Dog::printMessageCall(std::string msg) {
 Dog::Dog() : Animal() {
 	type = "Dog";
 	printMessageCall("Default constructor");
-	brain = new Brain;
+	brain = new Brain();
 }
 
 Dog::Dog(const Dog& other) : Animal(other) {
@@ -17,7 +17,7 @@ Dog::Dog(const Dog& other) : Animal(other) {
 		brain = NULL;
 	}
 	else {
-		brain = new Brain;
+		brain = new Brain();
 		*brain = *other.brain;
 	}
 }
@@ -31,7 +31,7 @@ Dog& Dog::operator=(const Dog& other) {
 		}
 		else {
 			delete brain;
-			brain = new Brain;
+			brain = new Brain();
 			*brain = *other.brain;
 		}
 	}
@@ -45,4 +45,8 @@ Dog::~Dog() {
 
 void Dog::makeSound() const{
 	std::cout << "b a r k" << std::endl;
+}
+
+void Dog::openBrain() {
+	brain->showIdeas();
 }
