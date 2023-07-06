@@ -38,9 +38,9 @@ bool Character::isDuplicateMateria(AMateria* m) {
 
 bool Character::isValidIdx(int idx) {
 	if (idx < 0 || size <= idx || inventory[idx] == NULL) {
-		return true;
+		return false;
 	}
-	return false;
+	return true;
 }
 
 Character::Character() : name("none"), rIdx(0) {
