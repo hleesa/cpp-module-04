@@ -22,6 +22,8 @@ public:
 	~Dog();
 
 	void makeSound() const;
+
+	void openBrain();
 };
 
 
