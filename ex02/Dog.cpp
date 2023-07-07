@@ -30,8 +30,6 @@ Dog& Dog::operator=(const Dog& other) {
 			brain = NULL;
 		}
 		else {
-			delete brain;
-			brain = new Brain();
 			*brain = *other.brain;
 		}
 	}

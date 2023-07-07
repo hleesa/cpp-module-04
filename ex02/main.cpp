@@ -62,9 +62,9 @@ void test3() {
 }
 
 int main() {
-//	test1();
-//	test2();
-//	test3();
-//	system("leaks abstract");
+	test1();
+	test2();
+	test3();
+	system("leaks abstract");
 	return 0;
 }
