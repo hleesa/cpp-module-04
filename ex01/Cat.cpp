@@ -26,12 +26,10 @@ Cat& Cat::operator=(const Cat& other) {
 	printMessageCall("Copy assignment operator");
 	if (this != &other) {
 		Animal::operator=(other);
-		delete brain;
 		if (other.brain == NULL) {
 			brain = NULL;
 		}
 		else {
-			brain = new Brain();
 			*brain = *other.brain;
 		}
 	}

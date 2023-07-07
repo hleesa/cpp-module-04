@@ -8,7 +8,7 @@ void Brain::printMessageCall(std::string msg) {
 Brain::Brain() {
 	printMessageCall("Default constructor");
 	for (size_t i = 0; i < size; ++i) {
-		ideas[i] = i;
+		ideas[i] = 'i';
 	}
 }
 
@@ -33,7 +33,7 @@ Brain::~Brain() {
 
 void Brain::showIdeas() {
 	for (size_t i = 0; i < size; ++i) {
-		std::cout << i << " ";
+		std::cout << ideas[i] << " ";
 	}
 	std::cout << std::endl;
 }
